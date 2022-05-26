@@ -2,39 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subscriber;
+use App\Models\Website;
 use Illuminate\Http\Request;
 
-class SubscriberController extends Controller
+class WebsiteController extends Controller
 {
     /**
-     * List of subscribers.
+     * List of websites.
      *
      * @return void
      */
     public function list()
     {
-        $subscribers = Subscriber::all();
-        return $this->getResponse('Success', 'Successfully retrieved subscriber data', $subscribers, 200);
+        $websites = Website::all();
+        return $this->getResponse('Success', 'Successfully retrieved website data', $websites, 200);
     }
 
     /**
-     * Create a new subscriber.
+     * Create a new website.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
-        $subscriber = new Subscriber;
+        $website = new Website;
 
-        $subscriber->email = $request->email;
+        $website->domain = $request->domain;
 
-        if (!$request->email) {
-            return $this->getResponse('Failed', 'Please fill the email', [], 400);
+        if (!$request->domain) {
+            return $this->getResponse('Failed', 'Please fill the domain', [], 400);
         }
 
-        $subscriber->save();
-        return $this->getResponse('Success', 'Successfully created subscriber!', $subscriber, 201);
+        $website->save();
+        return $this->getResponse('Success', 'Successfully created website!', $website, 201);
     }
 }
