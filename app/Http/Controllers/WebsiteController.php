@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 class WebsiteController extends Controller
 {
     /**
+     * List of websites.
+     *
+     * @return void
+     */
+    public function list()
+    {
+        $websites = Website::all();
+        return $this->getResponse('Success', 'Successfully retrieved website data', $websites, 200);
+    }
+
+    /**
      * Create a new website.
      *
      * @param  \Illuminate\Http\Request  $request
