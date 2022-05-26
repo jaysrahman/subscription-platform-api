@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 class SubscriberController extends Controller
 {
     /**
+     * List of subscribers.
+     *
+     * @return void
+     */
+    public function list()
+    {
+        $subscribers = Subscriber::all();
+        return $this->getResponse('Success', 'Successfully retrieved subscriber data', $subscribers, 200);
+    }
+
+    /**
      * Create a new subscriber.
      *
      * @param  \Illuminate\Http\Request  $request
