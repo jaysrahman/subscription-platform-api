@@ -9,6 +9,17 @@ use App\Mail\SubscriberEmail;
 class PostController extends Controller
 {
     /**
+     * List of posts.
+     *
+     * @return void
+     */
+    public function list()
+    {
+        $posts = Post::all();
+        return $this->getResponse('Success', 'Successfully retrieved post data', $posts, 200);
+    }
+
+    /**
      * Create a new post.
      *
      * @param  \Illuminate\Http\Request  $request
