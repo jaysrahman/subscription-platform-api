@@ -19,9 +19,10 @@ use App\Http\Controllers\{
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::get('/post/list', [PostController::class, 'list']);
+Route::get('/subscribe/list', [SubscribeController::class, 'list']);
+Route::get('/subscriber/list', [SubscriberController::class, 'list']);
+Route::get('/website/list', [WebsiteController::class, 'list']);
 
 Route::get('/post/create', [PostController::class, 'create']);
 Route::get('/subscribe', [SubscribeController::class, 'subscribe']);
