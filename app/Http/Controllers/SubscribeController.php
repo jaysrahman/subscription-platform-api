@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 class SubscribeController extends Controller
 {
     /**
+     * List of subscribes.
+     *
+     * @return void
+     */
+    public function list()
+    {
+        $subscribes = Subscribe::all();
+        return $this->getResponse('Success', 'Successfully retrieved subscribe data', $subscribes, 200);
+    }
+
+    /**
      * Subscribe to a website.
      *
      * @param  \Illuminate\Http\Request  $request
